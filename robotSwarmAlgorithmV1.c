@@ -37,7 +37,7 @@ void input ()
     scanf ("%d", &total_numb_destinations);
     destinations_coords = calloc (total_numb_destinations, sizeof(double));
 
-    /*  Input of those coördinates in a matrix:
+    /*  Input of those coÃ¶rdinates in a matrix:
         1st column: x-axis of the destination
         2nd column: y-axis of the destination
         3rd column: whether or not the destination has been visited yet */
