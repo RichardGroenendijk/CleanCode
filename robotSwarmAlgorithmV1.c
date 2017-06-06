@@ -3,6 +3,7 @@
 #include <math.h>
 
 #define Square(x) ((x) * (x))
+#define TOTAL_NUMB_ROBOTS 11
 
 /* This is the data structure that gives for each robot a location on the x- and y-axis */
 struct robot_location
@@ -17,7 +18,7 @@ typedef struct
 } robot_data;
 
 /* Declaration of global variables */
-robot_data robot[11];
+robot_data robot[TOTAL_NUMB_ROBOTS];
 double **destinations_coords;
 int total_numb_destinations;
 
@@ -26,8 +27,8 @@ void input ()
     int robot_numb, destination_numb;
 
     /* Input of the starting location of all the robots */
-    printf ("Give for all 11 robots the starting location coordinates:\n");
-    for (robot_numb = 0; robot_numb < 11; robot_numb++)
+    printf ("Give for all %d robots the starting location coordinates:\n", TOTAL_NUMB_ROBOTS);
+    for (robot_numb = 0; robot_numb < TOTAL_NUMB_ROBOTS; robot_numb++)
     {
         scanf ("%lf%lf", &robot[robot_numb].location.x_axis, &robot[robot_numb].location.y_axis);
     }
@@ -37,7 +38,7 @@ void input ()
     scanf ("%d", &total_numb_destinations);
     destinations_coords = calloc (total_numb_destinations, sizeof(double));
 
-    /*  Input of those coÃ¶rdinates in a matrix:
+    /*  Input of those coördinates in a matrix:
         1st column: x-axis of the destination
         2nd column: y-axis of the destination
         3rd column: whether or not the destination has been visited yet */
@@ -79,7 +80,7 @@ void shortest_paths (int round)
 
     printf ("\nRound %d\n", round);
 
-    for (robot_numb = 0; robot_numb < 11; robot_numb++)
+    for (robot_numb = 0; robot_numb < TOTAL_NUMB_ROBOTS; robot_numb++)
     {
         minimum_distance = 1E100;
         target_destination = -1;
@@ -117,7 +118,7 @@ int main()
     input();
 
     /* You only have to run the shortest_paths function until all destinations are reached */
-    while (11*round < total_numb_destinations)
+    while (TOTAL_NUMB_ROBOTS*round < total_numb_destinations)
     {
         shortest_paths (round+1);
         round++;
